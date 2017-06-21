@@ -30,8 +30,10 @@ namespace B4R {
 		buffer.length = 0;
 		rcvBuffer.data = rcvBufferData;
 		this->NewDataSub = NewDataSub;
+#ifndef ESP32
 		Wire.onReceive(receiveEvent);
 		Wire.onRequest(requestEvent);
+#endif
 		Wire.begin(Address);
 	}
 	void WireSlave::SetDataForMaster(ArrayByte* Data) {
